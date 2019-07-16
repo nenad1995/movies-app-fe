@@ -8,6 +8,22 @@ export class MoviesService {
   getAll() {
     return axios.get('movies');
   }
+
+  addMovie(movie) {
+    return axios.post('movies', movie);
+  }
+
+  get(id) {
+    return axios.get('movies/' + id);
+  }
+
+  edit(id, editedMovie) {
+    return axios.put('movies/' + id, editedMovie);
+  }
+
+  delete(id) {
+    return axios.delete('movies/' + id);
+  }
 }
 
 

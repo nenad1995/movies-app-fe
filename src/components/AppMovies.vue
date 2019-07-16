@@ -1,32 +1,20 @@
 <template>
   <div>
-    <table style="width:100%">
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Director</th>
-        <th>Image url</th>
-        <th>Duration</th>
-        <th>Release date</th>
-        <th>Genre</th>
-      </tr>
-      <tr v-for="movie in movies" :key="movie.id">
-        <td>{{ movie.id }}</td>
-        <td>{{ movie.title }}</td>
-        <td>{{ movie.director }}</td>
-        <td>{{ movie.imageUrl }}</td>
-        <td>{{ movie.duration }}</td>
-        <td>{{ movie.releaseDate }}</td>
-        <td>{{ movie.genre }}</td>
-      </tr>
-    </table>
+    <ul v-for="movie in movies" :key="movie.id">
+      <movie-row :movie="movie" />
+    </ul>
   </div>
 </template>
 
 <script>
 import { moviesService } from '../services/Movies'
+import MovieRow from "./MovieRow";
 
 export default {
+  components: {
+    MovieRow,
+  },
+  
   data() {
     return {
       movies: []
