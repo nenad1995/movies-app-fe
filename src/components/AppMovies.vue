@@ -4,7 +4,11 @@
       <movie-search @search-movie="searchMovie"/>
     </div>
     <ul v-for="movie in filteredMovies" :key="movie.id">
-      <movie-row :movie="movie" @select="selectMovies" />
+      <movie-row 
+        :movie="movie" 
+        :selected="isSelected(movie.id)" 
+        @select-movie="selectMovie"
+        @deselect-movie="deselectMovie" />
     </ul>
     <div v-if="filteredMovies.length === 0">
       No movies found
@@ -44,28 +48,30 @@ export default {
 
   methods: {
     searchMovie(search) {
-      this.searchTerm = search
+      this.searchTerm = search;
     },
 
-    selectMovies(id) {
-      if (this.selectedMovies.includes(id)) {
-        let indexOf = this.selectedMovies.indexOf(id)
-        this.selectedMovies.splice(indexOf, 1)
+    selectMovie(id) {
+      this.selectedMovies.push(id);
+    },
 
-        return
-      }
-      this.selectedMovies.push(id)
+    deselectMovie(id) {
+      this.selectedMovies = this.selectedMovies.filter(el => el !== id);
     },
 
     selectAll() {
       this.selectedMovies = [];
-      this.movies.forEach(movie => {
-        this.selectedMovies.push(movie.id)
+      this.filteredMovies.forEach(movie => {
+        this.selectedMovies.push(movie.id);
       })
     },
 
     deselectAll() {
-      this.selectedMovies = []
+      this.selectedMovies = [];
+    },
+
+    isSelected(id) {
+      return  this.selectedMovies.includes(id);
     }
   },
 

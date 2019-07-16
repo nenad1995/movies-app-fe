@@ -9,20 +9,32 @@
       Release Date: {{movie.releaseDate}}
       Genre: {{movie.genre}}
     </li>
-    <button @click="selected">Select</button>
+    <button v-if="!selected" @click="selectMovie">
+      Select
+    </button>
+    <button v-else @click="deselectMovie">
+      Deselect
+    </button>
   </div>
 </template>
 
 <script>
 export default {
   props: [
-    "movie"
+    "movie",
+    "selected"
   ],
 
   methods: {
-    selected() {
-      this.$emit("select", this.movie.id);
+    selectMovie() {
+      this.$emit('select-movie', this.movie.id)
+      // this.selected = true;
+    },
+
+    deselectMovie() {
+      this.$emit('deselect-movie', this.movie.id)
+      // this.selected = false;
     }
-  }
+  },
 }
 </script>
