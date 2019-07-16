@@ -12,6 +12,14 @@
     <div>
       Number of selected movies: {{selectedMovies.length}}
     </div>
+     <div>
+      <button v-if="movies.length !== selectedMovies.length" @click="selectAll">
+        Select All
+      </button>
+      <button v-if="movies.length === selectedMovies.length" @click="deselectAll">
+        Deselect All
+      </button>
+    </div>
   </div>
 </template>
 
@@ -48,6 +56,17 @@ export default {
       }
       this.selectedMovies.push(id)
     },
+
+    selectAll() {
+      this.selectedMovies = [];
+      this.movies.forEach(movie => {
+        this.selectedMovies.push(movie.id)
+      })
+    },
+
+    deselectAll() {
+      this.selectedMovies = []
+    }
   },
 
   computed: {
