@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input class="form-control" type="text" placeholder="Search" @input="search">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search" @input="search">
   </div>
 </template>
 
