@@ -28,12 +28,10 @@ export default {
   methods: {
     selectMovie() {
       this.$emit('select-movie', this.movie.id)
-      // this.selected = true;
     },
 
     deselectMovie() {
       this.$emit('deselect-movie', this.movie.id)
-      // this.selected = false;
     }
   },
 }
