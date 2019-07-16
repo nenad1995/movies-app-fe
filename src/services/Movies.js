@@ -14,15 +14,15 @@ export class MoviesService {
   }
 
   get(id) {
-    return axios.get('movies/' + id);
+    return axios.get(`movies/${id}`);
   }
 
   edit(id, editedMovie) {
-    return axios.put('movies/' + id, editedMovie);
+    return axios.put(`movies/${id}`, editedMovie);
   }
 
   delete(id) {
-    return axios.delete('movies/' + id);
+    return axios.delete(`movies/${id}`);
   }
 }
 
