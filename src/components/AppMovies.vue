@@ -5,11 +5,9 @@
 </template>
 
 <script>
+import { moviesService } from '../services/Movies'
+
 export default {
 
 }
 </script>
-
-<style>
-
-</style>
